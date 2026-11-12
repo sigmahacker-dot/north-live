@@ -137,6 +137,16 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 .bnav .center{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--g2),var(--g1));
   display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
+
+/* RESPONSIVE FIX — no side wobble */
+html,body{overflow-x:hidden;overflow-x:clip}
+body{width:100%}
+img,svg,video{max-width:100%}
+.device{max-width:min(452px,calc(100vw - 16px))}
+.phone{overflow-x:clip}
+.rrow>div,.alertrow>div,.srow>div{min-width:0}
+.tt,.ts,.nt,.sc-meta{overflow-wrap:break-word}
+.bnav{max-width:calc(100vw - 24px)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which SIM works best in Naran?", "acceptedAnswer": {"@type": "Answer", "text": "Zong is the strongest network in Naran, with good 4G in the town and bazaar. Telenor and Jazz also work well in town."}}, {"@type": "Question", "name": "Does SCOM work in Naran?", "acceptedAnswer": {"@type": "Answer", "text": "Only patchily. SCOM is the regional network for Gilgit-Baltistan and Azad Kashmir, while Naran is in Khyber Pakhtunkhwa — travellers crossing into GB often buy an SCOM SIM after Chilas. In Naran itself, rely on Zong, Telenor or Jazz."}}, {"@type": "Question", "name": "Is there 4G in Naran?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, in Naran town on Zong, Telenor and Jazz. Signal weakens on the road up the valley towards Battakundi and Bassal, and there is no reliable coverage on the Babusar climb."}}, {"@type": "Question", "name": "Will my SIM work at Babusar Top?", "acceptedAnswer": {"@type": "Answer", "text": "Expect little to no signal at Babusar Top itself on any network. Download offline maps in Naran before you climb — and note that the pass is closed for winter from November."}}]}</script>
 </head>

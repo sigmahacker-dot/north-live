@@ -137,6 +137,16 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 .bnav .center{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--g2),var(--g1));
   display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
+
+/* RESPONSIVE FIX — no side wobble */
+html,body{overflow-x:hidden;overflow-x:clip}
+body{width:100%}
+img,svg,video{max-width:100%}
+.device{max-width:min(452px,calc(100vw - 16px))}
+.phone{overflow-x:clip}
+.rrow>div,.alertrow>div,.srow>div{min-width:0}
+.tt,.ts,.nt,.sc-meta{overflow-wrap:break-word}
+.bnav{max-width:calc(100vw - 24px)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is there 4G in Skardu?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Skardu city has 4G on SCOM, Zong and Jazz. Coverage is a city-and-highway thing — it fades quickly once you leave for the valleys."}}, {"@type": "Question", "name": "Does Zong work in Skardu?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, Zong gives good 4G in Skardu city and along parts of the Skardu Road. For trips beyond the city — Shigar, Kharmang, Deosai — SCOM is the safer main SIM."}}, {"@type": "Question", "name": "Which SIM should I carry for Deosai and the Baltistan valleys?", "acceptedAnswer": {"@type": "Answer", "text": "SCOM. It is the only network with meaningful reach into the Baltistan valleys, and even SCOM has no reliable signal inside the Deosai Plains — download offline maps before you go."}}, {"@type": "Question", "name": "Does Jazz work in Skardu?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, Jazz works in Skardu city with usable 4G. Outside the city its coverage is thinner than SCOM's."}}]}</script>
 </head>

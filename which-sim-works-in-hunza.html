@@ -137,6 +137,16 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 .bnav .center{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--g2),var(--g1));
   display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
+
+/* RESPONSIVE FIX — no side wobble */
+html,body{overflow-x:hidden;overflow-x:clip}
+body{width:100%}
+img,svg,video{max-width:100%}
+.device{max-width:min(452px,calc(100vw - 16px))}
+.phone{overflow-x:clip}
+.rrow>div,.alertrow>div,.srow>div{min-width:0}
+.tt,.ts,.nt,.sc-meta{overflow-wrap:break-word}
+.bnav{max-width:calc(100vw - 24px)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does Zong work in Hunza?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Zong has strong 4G in Karimabad and along the Karakoram Highway towns of Hunza. It thins out in the side valleys and on the climb towards Khunjerab."}}, {"@type": "Question", "name": "Which SIM is best for Hunza?", "acceptedAnswer": {"@type": "Answer", "text": "SCOM is the most reliable all-round choice for Hunza — it keeps working in Upper Hunza and smaller villages where national networks drop. Pair it with Zong or Jazz for the fastest 4G in Karimabad."}}, {"@type": "Question", "name": "Is there 4G in Hunza?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — Karimabad and the main KKH towns have 4G on SCOM, Zong and Jazz. Speeds fall in the evenings and disappear entirely in remote spots such as Chapursan and the upper Batura area."}}, {"@type": "Question", "name": "Which SIM is best for Gilgit-Baltistan overall?", "acceptedAnswer": {"@type": "Answer", "text": "SCOM, the regional network built for Gilgit-Baltistan and AJK, has the widest mountain coverage. Most travellers carry SCOM as their main SIM and a Zong or Jazz SIM for fast data in the bigger towns."}}]}</script>
 </head>

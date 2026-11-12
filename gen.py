@@ -355,6 +355,16 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 .bnav .center{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--g2),var(--g1));
   display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
+
+/* RESPONSIVE FIX — no side wobble */
+html,body{overflow-x:hidden;overflow-x:clip}
+body{width:100%}
+img,svg,video{max-width:100%}
+.device{max-width:min(452px,calc(100vw - 16px))}
+.phone{overflow-x:clip}
+.rrow>div,.alertrow>div,.srow>div{min-width:0}
+.tt,.ts,.nt,.sc-meta{overflow-wrap:break-word}
+.bnav{max-width:calc(100vw - 24px)}
 """
 
 

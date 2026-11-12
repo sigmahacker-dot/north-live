@@ -137,6 +137,16 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 .bnav .center{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--g2),var(--g1));
   display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
+
+/* RESPONSIVE FIX — no side wobble */
+html,body{overflow-x:hidden;overflow-x:clip}
+body{width:100%}
+img,svg,video{max-width:100%}
+.device{max-width:min(452px,calc(100vw - 16px))}
+.phone{overflow-x:clip}
+.rrow>div,.alertrow>div,.srow>div{min-width:0}
+.tt,.ts,.nt,.sc-meta{overflow-wrap:break-word}
+.bnav{max-width:calc(100vw - 24px)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Deosai open in November?", "acceptedAnswer": {"@type": "Answer", "text": "No. The Deosai Plains are snow covered and closed for the winter season (status: 12 November 2026). Both entry tracks — from Skardu and from Astore — are impassable until the snow melts."}}, {"@type": "Question", "name": "When does Deosai open for the season?", "acceptedAnswer": {"@type": "Answer", "text": "Deosai typically opens in June, once the tracks are cleared, and stays open until about October, closing with the first heavy snow. In a heavy-snow year the opening can slip to late June or July."}}, {"@type": "Question", "name": "What vehicle do I need for Deosai?", "acceptedAnswer": {"@type": "Answer", "text": "A high-clearance vehicle is strongly recommended — the tracks are unpaved, with water crossings and rocky sections. In the peak summer season regular cars do cross in good weather, but low clearance and bad weather catch many drivers out."}}, {"@type": "Question", "name": "Is there mobile signal in Deosai?", "acceptedAnswer": {"@type": "Answer", "text": "There is little to no reliable mobile signal inside the plains on any network. Download offline maps, carry enough fuel, and tell someone your plan before you enter."}}]}</script>
 </head>

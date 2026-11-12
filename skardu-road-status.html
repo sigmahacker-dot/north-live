@@ -137,6 +137,16 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 .bnav .center{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--g2),var(--g1));
   display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
+
+/* RESPONSIVE FIX — no side wobble */
+html,body{overflow-x:hidden;overflow-x:clip}
+body{width:100%}
+img,svg,video{max-width:100%}
+.device{max-width:min(452px,calc(100vw - 16px))}
+.phone{overflow-x:clip}
+.rrow>div,.alertrow>div,.srow>div{min-width:0}
+.tt,.ts,.nt,.sc-meta{overflow-wrap:break-word}
+.bnav{max-width:calc(100vw - 24px)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Skardu Road open today?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — the S-1 Skardu Road is open, with a caution advisory for winter rockfall on the stretches near Stak (North Live, 12 November 2026). Travel in daylight where you can."}}, {"@type": "Question", "name": "How long is the drive from the KKH to Skardu?", "acceptedAnswer": {"@type": "Answer", "text": "The Skardu Road runs about 167 km from its junction with the Karakoram Highway near Jaglot to Skardu city, and normally takes 5 to 7 hours. Allow longer in winter or after rain, when clearing work can hold traffic."}}, {"@type": "Question", "name": "Is Skardu Road risky in winter?", "acceptedAnswer": {"@type": "Answer", "text": "It has landslide- and rockfall-prone sections carved into the Indus gorge, and winter adds ice and falling rocks. The standard advice is to travel in daylight, avoid the road during heavy rain, and check the latest status before setting off."}}, {"@type": "Question", "name": "Is there another way to reach Skardu in winter?", "acceptedAnswer": {"@type": "Answer", "text": "By road, no — in winter the S-1 is the only route; the Deosai track from Astore is a summer-only alternative. Skardu also has flights from Islamabad, but they are weather-dependent and are often cancelled in poor visibility."}}]}</script>
 </head>

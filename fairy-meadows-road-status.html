@@ -137,6 +137,16 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 .bnav .center{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--g2),var(--g1));
   display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
+
+/* RESPONSIVE FIX — no side wobble */
+html,body{overflow-x:hidden;overflow-x:clip}
+body{width:100%}
+img,svg,video{max-width:100%}
+.device{max-width:min(452px,calc(100vw - 16px))}
+.phone{overflow-x:clip}
+.rrow>div,.alertrow>div,.srow>div{min-width:0}
+.tt,.ts,.nt,.sc-meta{overflow-wrap:break-word}
+.bnav{max-width:calc(100vw - 24px)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I visit Fairy Meadows in winter?", "acceptedAnswer": {"@type": "Answer", "text": "It is possible, but it is a different trip from summer. The Raikot–Tattu jeep track only runs in good winter weather, most guesthouses are closed, and the trek from Tattu is on snow. Confirm with local jeep operators at Raikot Bridge before you set out."}}, {"@type": "Question", "name": "How do I reach Fairy Meadows?", "acceptedAnswer": {"@type": "Answer", "text": "Drive the Karakoram Highway to Raikot Bridge, take a local jeep up the track to Tattu village (about 1 to 1.5 hours), then trek roughly 2 to 3 hours to Fairy Meadows. In winter, allow extra time for both stages."}}, {"@type": "Question", "name": "Is there mobile signal at Fairy Meadows?", "acceptedAnswer": {"@type": "Answer", "text": "Signal is limited and patchy — SCOM and Zong connect at some points around Tattu and the meadows, but treat Fairy Meadows as mostly off-grid and download what you need at Raikot."}}, {"@type": "Question", "name": "Do I need a guide for Fairy Meadows in winter?", "acceptedAnswer": {"@type": "Answer", "text": "In winter, yes — hiring a local guide or porter from Tattu is strongly recommended. Snow hides the trail, days are short, and conditions at about 3,300m change fast."}}]}</script>
 </head>

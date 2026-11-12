@@ -137,6 +137,16 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 .bnav .center{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--g2),var(--g1));
   display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
+
+/* RESPONSIVE FIX — no side wobble */
+html,body{overflow-x:hidden;overflow-x:clip}
+body{width:100%}
+img,svg,video{max-width:100%}
+.device{max-width:min(452px,calc(100vw - 16px))}
+.phone{overflow-x:clip}
+.rrow>div,.alertrow>div,.srow>div{min-width:0}
+.tt,.ts,.nt,.sc-meta{overflow-wrap:break-word}
+.bnav{max-width:calc(100vw - 24px)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is the Karakoram Highway open today?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — the KKH between Chilas and Gilgit is open for all traffic (North Live launch report, 12 November 2026). Conditions on the KKH can change within hours, so check this page again before a long drive."}}, {"@type": "Question", "name": "Is the Karakoram Highway open in winter?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The KKH is Gilgit-Baltistan's year-round lifeline and stays open through winter. Short closures do happen — most often for landslides, rockfall or fog — but it is the only all-season road into the region."}}, {"@type": "Question", "name": "How long does Chilas to Gilgit take?", "acceptedAnswer": {"@type": "Answer", "text": "The section is roughly 230 km and usually takes 5 to 7 hours by car, depending on road works, weather and stops. Start early in winter so you are not driving the gorge sections after dark."}}, {"@type": "Question", "name": "What is the alternative route when Babusar Top is closed?", "acceptedAnswer": {"@type": "Answer", "text": "This is the alternative: traffic from Islamabad and Mansehra uses the KKH via Besham, Pattan and Dassu to Chilas, then continues to Gilgit. It adds several hours compared with the Babusar shortcut."}}]}</script>
 </head>

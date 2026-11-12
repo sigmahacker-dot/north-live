@@ -137,6 +137,16 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 .bnav .center{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--g2),var(--g1));
   display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
+
+/* RESPONSIVE FIX — no side wobble */
+html,body{overflow-x:hidden;overflow-x:clip}
+body{width:100%}
+img,svg,video{max-width:100%}
+.device{max-width:min(452px,calc(100vw - 16px))}
+.phone{overflow-x:clip}
+.rrow>div,.alertrow>div,.srow>div{min-width:0}
+.tt,.ts,.nt,.sc-meta{overflow-wrap:break-word}
+.bnav{max-width:calc(100vw - 24px)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is the Gilgit to Ghizer road open today?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — the road is open, with a winter caution for icy patches after Gahkuch in the early morning (North Live advisory, 12 November 2026). If you can, start after 10am when the sun has softened the ice."}}, {"@type": "Question", "name": "How far is Gahkuch from Gilgit?", "acceptedAnswer": {"@type": "Answer", "text": "Gahkuch, the main town of Ghizer district, is about 72 km from Gilgit city — roughly 2 to 3 hours by road along the Gilgit River."}}, {"@type": "Question", "name": "Is Shandur Pass open in winter?", "acceptedAnswer": {"@type": "Answer", "text": "No. Shandur Top (about 3,700m), which connects Ghizer with Chitral, is a seasonal pass that closes with winter snow — typically from around November to May. The lower Gilgit–Ghizer road up to Gahkuch and Phander stays open."}}, {"@type": "Question", "name": "Any winter driving tips for the Ghizer road?", "acceptedAnswer": {"@type": "Answer", "text": "Watch for black ice on shaded bends before mid-morning, keep speeds low on the river-side sections, and carry chains if you are heading beyond Gahkuch towards Phander or Gupis in a cold spell."}}]}</script>
 </head>

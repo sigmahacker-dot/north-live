@@ -137,6 +137,16 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 .bnav .center{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--g2),var(--g1));
   display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
+
+/* RESPONSIVE FIX — no side wobble */
+html,body{overflow-x:hidden;overflow-x:clip}
+body{width:100%}
+img,svg,video{max-width:100%}
+.device{max-width:min(452px,calc(100vw - 16px))}
+.phone{overflow-x:clip}
+.rrow>div,.alertrow>div,.srow>div{min-width:0}
+.tt,.ts,.nt,.sc-meta{overflow-wrap:break-word}
+.bnav{max-width:calc(100vw - 24px)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Khunjerab Pass open today?", "acceptedAnswer": {"@type": "Answer", "text": "The road from Gilgit to Khunjerab is open for traffic (North Live launch report, 12 November 2026). Expect sub-zero temperatures and strong wind at the pass itself, which sits at 4,693m."}}, {"@type": "Question", "name": "Can tourists cross the Khunjerab border in winter?", "acceptedAnswer": {"@type": "Answer", "text": "Typically not. Under the Pakistan–China agreement the Khunjerab border crossing usually closes to tourists and trade for the winter months (commonly January to March), even though the road up to the pass on the Pakistan side may still be driveable. Always check the current notice before planning a crossing."}}, {"@type": "Question", "name": "How cold is Khunjerab Pass in November?", "acceptedAnswer": {"@type": "Answer", "text": "Well below freezing. Daytime temperatures at the pass in November are commonly around −10°C or lower, and wind chill makes it feel much colder. Warm layers, gloves and a hat are essential even for a short photo stop."}}, {"@type": "Question", "name": "Which SIM works at Khunjerab Pass?", "acceptedAnswer": {"@type": "Answer", "text": "Mobile coverage fades after Sost, the last town before the pass. SCOM is usually the last network to drop out on this stretch, and there is no reliable signal at the pass itself. Download offline maps in Gilgit or Karimabad."}}]}</script>
 </head>
