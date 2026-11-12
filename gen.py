@@ -345,6 +345,8 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 
 .foot{margin-top:24px;text-align:center;font-size:11.5px;color:var(--mut);line-height:1.7;padding:0 8px}
 .foot b{color:var(--deep)}
+.appfoot{display:flex;align-items:center;justify-content:center;gap:8px;margin:22px auto 0;background:linear-gradient(145deg,var(--g1),var(--g2));color:#fff;font-weight:700;font-size:13.5px;padding:12px 22px;border-radius:999px;box-shadow:0 10px 22px rgba(23,122,68,.35)}
+.appfoot:active{transform:scale(.97)}
 
 /* bottom nav */
 .bnav{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;width:min(394px,calc(100% - 28px));
@@ -454,6 +456,7 @@ NAV = """
 """
 
 FOOT = """
+  <button class="appfoot" onclick="window.nlInstall&&window.nlInstall()"><i class="fa-solid fa-mobile-screen"></i> Get the free app</button>
   <p class="foot"><b>North Live</b> — a GB Adventure service.<br>Launch data — statuses from public reports &amp; officials, 12 Nov 2026. Report changes on WhatsApp.<br>Statuses are reports, not guarantees — check locally before a high pass in bad weather.</p>
 """
 
@@ -514,9 +517,16 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
   var bar=document.getElementById('appbar'),sub=document.getElementById('appbarSub'),btn=document.getElementById('appInstall');
   if(!bar)return;
   var standalone=(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true;
-  var dismissed=0;try{dismissed=+localStorage.getItem('nlAppDismiss')||0;}catch(e){}
+  var dismissed=0;try{dismissed=+localStorage.getItem('nlAppDismiss2')||0;}catch(e){}
   var installed=false;try{installed=!!localStorage.getItem('nlAppInstalled');}catch(e){}
   var forced=new URLSearchParams(location.search).has('showapp');
+  window.__nlDeferred=window.__nlDeferred||null;
+  window.addEventListener('beforeinstallprompt',function(e){window.__nlDeferred=e;});
+  window.nlInstall=function(){
+    if(standalone){sub.textContent='You are already using the North Live app.';bar.style.display='flex';return;}
+    if(window.__nlDeferred){window.__nlDeferred.prompt();window.__nlDeferred.userChoice.then(function(){window.__nlDeferred=null;});}
+    else{bar.style.display='flex';}
+  };
   if(standalone||installed||(!forced&&Date.now()-dismissed<14*864e5))return;
   var deferred=null,isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
   function show(){bar.style.display='flex';}
@@ -529,7 +539,7 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
     else if(isIOS){sub.textContent='Tap the Share icon, then choose "Add to Home Screen".';}
     else{sub.textContent='Open the Chrome menu and tap "Install app" / "Add to Home screen".';}
   });
-  document.getElementById('appClose').addEventListener('click',function(){try{localStorage.setItem('nlAppDismiss',String(Date.now()));}catch(e){}bar.style.display='none';});
+  document.getElementById('appClose').addEventListener('click',function(){try{localStorage.setItem('nlAppDismiss2',String(Date.now()));}catch(e){}bar.style.display='none';});
 })();
 """
 

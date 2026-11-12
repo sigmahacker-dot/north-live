@@ -181,6 +181,8 @@ h1{font-size:27px;font-weight:800;line-height:1.22;color:var(--deep);margin-top:
 .reveal.visible{opacity:1;transform:none}
 
 /* ---- glassmorphism + iOS polish (2026-11-12) ---- */
+.appfoot{display:flex;align-items:center;justify-content:center;gap:8px;margin:22px auto 0;background:linear-gradient(145deg,#2E9E5B,#177A44);color:#fff;font-weight:700;font-size:13.5px;padding:12px 22px;border-radius:999px;box-shadow:0 10px 22px rgba(23,122,68,.35)}
+.appfoot:active{transform:scale(.97)}
 .rrow,.sigc,.wxcard,.faqc,.infoc,.alertrow,.gcard,.chcard{background:rgba(255,255,255,.86) !important;backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.7)}
 .bnav{background:rgba(9,44,29,.78) !important;backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);border:1px solid rgba(255,255,255,.22);box-shadow:0 18px 40px rgba(7,40,26,.35)}
 .appbar{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18)}
@@ -284,6 +286,7 @@ img,svg,video{max-width:100%}
 
   <a class="bigbtn reveal" href="https://wa.me/923555101279?text=North%20Live%20report%3A%20" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Report on WhatsApp <i class="fa-solid fa-arrow-right"></i></a>
 
+  <button class="appfoot" onclick="window.nlInstall&&window.nlInstall()"><i class="fa-solid fa-mobile-screen"></i> Get the free app</button>
   <p class="foot"><b>North Live</b> — a GB Adventure service.<br>Launch data — statuses from public reports &amp; officials, 12 Nov 2026. Report changes on WhatsApp.<br>Statuses are reports, not guarantees — check locally before a high pass in bad weather.</p>
 </div>
 
@@ -372,9 +375,16 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
   var bar=document.getElementById('appbar'),sub=document.getElementById('appbarSub'),btn=document.getElementById('appInstall');
   if(!bar)return;
   var standalone=(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true;
-  var dismissed=0;try{dismissed=+localStorage.getItem('nlAppDismiss')||0;}catch(e){}
+  var dismissed=0;try{dismissed=+localStorage.getItem('nlAppDismiss2')||0;}catch(e){}
   var installed=false;try{installed=!!localStorage.getItem('nlAppInstalled');}catch(e){}
   var forced=new URLSearchParams(location.search).has('showapp');
+  window.__nlDeferred=window.__nlDeferred||null;
+  window.addEventListener('beforeinstallprompt',function(e){window.__nlDeferred=e;});
+  window.nlInstall=function(){
+    if(standalone){sub.textContent='You are already using the North Live app.';bar.style.display='flex';return;}
+    if(window.__nlDeferred){window.__nlDeferred.prompt();window.__nlDeferred.userChoice.then(function(){window.__nlDeferred=null;});}
+    else{bar.style.display='flex';}
+  };
   if(standalone||installed||(!forced&&Date.now()-dismissed<14*864e5))return;
   var deferred=null,isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
   function show(){bar.style.display='flex';}
@@ -387,7 +397,7 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
     else if(isIOS){sub.textContent='Tap the Share icon below, then choose "Add to Home Screen".';}
     else{sub.textContent='Open the Chrome menu (⋮) and tap "Install app" / "Add to Home screen".';}
   });
-  document.getElementById('appClose').addEventListener('click',function(){try{localStorage.setItem('nlAppDismiss',String(Date.now()));}catch(e){}bar.style.display='none';});
+  document.getElementById('appClose').addEventListener('click',function(){try{localStorage.setItem('nlAppDismiss2',String(Date.now()));}catch(e){}bar.style.display='none';});
 })();
 
 // ---------- live status ----------
