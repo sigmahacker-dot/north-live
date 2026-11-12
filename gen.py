@@ -313,7 +313,8 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
 .tile.green{background:var(--okbg);color:var(--ok)} .tile.red{background:var(--badbg);color:var(--bad)} .tile.amber{background:var(--warnbg);color:var(--warn)}
 .rrow .tt{font-size:14.5px;font-weight:600;line-height:1.3}
 .rrow .ts{font-size:12px;color:var(--mut);margin-top:2px;line-height:1.4}
-.rrow .rt{margin-left:auto;flex:none}
+.rrow .rt{margin-left:auto;text-align:right;flex:0 1 auto;max-width:44%}
+.rrow .tm{display:block;font-size:11px;color:var(--mut);margin-top:5px;overflow-wrap:break-word}
 .siglink{margin-top:14px;background:#fff;border-radius:22px;box-shadow:var(--sh);padding:15px;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600;color:var(--deep)}
 .siglink .tile{background:var(--okbg);color:var(--g1)}
 .siglink .chev{margin-left:auto;color:#B9C8BE}
