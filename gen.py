@@ -494,6 +494,8 @@ fetch('data.json').then(function(x){return x.json();}).then(function(d){
   document.getElementById('stReason').textContent=rt.reason;
   document.getElementById('stDetail').textContent=rt.detail;
   document.getElementById('stMeta').textContent='Source: '+rt.source+' \\u00B7 updated '+relTime(rt.updatedISO);
+  var ax=document.getElementById('wxalert');
+  if(ax&&d.alert&&d.alert.text){document.getElementById('wxalertTx').innerHTML='<b>'+d.alert.title+'</b> '+d.alert.text+' ('+d.alert.source+')';ax.style.display='flex';}
 }).catch(function(){});
 fetch('https://api.open-meteo.com/v1/forecast?latitude=__LAT__&longitude=__LON__&current=temperature_2m,weather_code,wind_speed_10m&timezone=Asia%2FKarachi')
 .then(function(x){return x.json();}).then(function(d){var c=d.current;
@@ -533,6 +535,7 @@ def route_page(r, routes_by_id):
     <p class="sc-detail" id="stDetail">""" + r["detail"] + """</p>
     <p class="sc-meta"><i class="fa-solid fa-circle-check"></i><span id="stMeta">""" + meta + """</span></p>
   </div>
+  <div class="altbox" id="wxalert" style="display:none"><i class="fa-solid fa-cloud-bolt"></i><div id="wxalertTx"></div></div>
   <p class="ans">""" + r["detail"] + """</p>
   <p class="ans">""" + ex["context"] + """</p>""" + alt + """
   <a class="bigbtn" href=\"""" + WA + """\" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Report a change on WhatsApp</a>
@@ -566,6 +569,7 @@ def signal_page(key, s, routes_by_id):
   <p class="crumb">Mobile signal guide · Northern Pakistan</p>
   <h1 class="q">Which SIM Works in """ + s["short"] + """?</h1>
   <div class="quickbox"><b>QUICK ANSWER</b>""" + s["quick"] + """</div>
+  <div class="altbox" id="wxalert" style="display:none"><i class="fa-solid fa-cloud-bolt"></i><div id="wxalertTx"></div></div>
   <p class="ans">""" + s["intro"] + """</p>
   <div class="sigcard">""" + rows + """
   </div>
@@ -575,7 +579,16 @@ def signal_page(key, s, routes_by_id):
   """ + rel_routes + """
   <h2 class="sec">Signal in other places</h2>""" + others + """
   """ + GBCARD + FOOT + "</div>" + NAV
-    return head(title, desc, canonical, faq_jsonld(s["faqs"])) + body
+    html = head(title, desc, canonical, faq_jsonld(s["faqs"])) + body
+    return html.replace("</body>", ALERT_SCRIPT + "\n</body>")
+
+
+ALERT_SCRIPT = """<script>
+fetch('data.json').then(function(x){return x.json();}).then(function(d){
+  var ax=document.getElementById('wxalert');
+  if(ax&&d.alert&&d.alert.text){document.getElementById('wxalertTx').innerHTML='<b>'+d.alert.title+'</b> '+d.alert.text+' ('+d.alert.source+')';ax.style.display='flex';}
+}).catch(function(){});
+</script>"""
 
 
 def main():

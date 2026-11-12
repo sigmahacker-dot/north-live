@@ -209,6 +209,11 @@ img,svg,video{max-width:100%}
     <a href="#book"><span class="ic"><i class="fa-solid fa-suitcase"></i></span>Book Tour</a>
   </div>
 
+  <div class="alertrow reveal" id="wxalert" style="display:none">
+    <span class="tile amber"><i class="fa-solid fa-cloud-bolt"></i></span>
+    <div><div class="tt" id="wxalertT"></div><div class="ts" id="wxalertTx"></div></div>
+  </div>
+
   <a class="alertrow reveal" href="babusar-top-road-status.html">
     <span class="tile red"><i class="fa-solid fa-triangle-exclamation"></i></span>
     <div><div class="tt">Babusar Top — closed by police</div><div class="ts">Heavy snowfall · closed 11 Nov for the winter season — use the KKH via Chilas instead</div></div>
@@ -272,7 +277,7 @@ var FALLBACK={routes:[
 {id:"naran",name:"Naran & Kaghan Valley",slug:"naran",status:"caution",reason:"Open to Naran — snow beyond",detail:"Naran town is reachable and receiving snowfall tourists; the road beyond Bassal towards Babusar is closed by police.",source:"District police / The News, 12 Nov 2026",reports:null,updatedISO:"2026-11-12T08:30:00+05:00",lat:34.91,lon:73.65},
 {id:"gilgit-ghizer",name:"Gilgit to Ghizer",slug:"gilgit-ghizer",status:"caution",reason:"Icy patches in the morning",detail:"Advisory: icy patches after Gahkuch before 10am in winter — drive slow.",source:"North Live advisory",reports:null,updatedISO:"2026-11-12T08:30:00+05:00",lat:36.18,lon:73.77},
 {id:"fairy-meadows",name:"Fairy Meadows (Raikot)",slug:"fairy-meadows",status:"caution",reason:"Jeep track — winter conditions",detail:"The Raikot–Tattu jeep track runs in winter only in good weather; confirm with local jeep operators before going.",source:"North Live advisory",reports:null,updatedISO:"2026-11-12T08:30:00+05:00",lat:35.38,lon:74.60}
-]};
+],alert:{title:"Weather alert — Gilgit-Baltistan, 12–14 Nov",text:"Heavy rain with isolated hailstorm and gusty winds (40–50 km/h, gusting to 60) over Gilgit-Baltistan today. Rain and thunderstorm with snow on the hills continue through the morning of 14 Nov. Skardu: rain today (90%), showers on Friday. Gilgit: rain all day today, still wet on Friday. Sat 14 – Sun 15 stay unsettled with rain and snow — the next fully clear day is Wed 18 Nov.",source:"IMD advisory, 11 Nov 2026 · PMD forecast, 12 Nov 2026",updatedISO:"2026-11-12T13:00:00+05:00"}};
 
 var SIG={
  karimabad:[["SCOM",4,"Best data"],["Zong",4,"Strong 4G"],["Jazz",4,"Strong 4G"],["Telenor",2,"Slow"],["Ufone",1,"Weak"]],
@@ -322,9 +327,18 @@ document.querySelectorAll('.fpill').forEach(function(p){p.addEventListener('clic
   currentFilter=p.getAttribute('data-f');applyFilter();
 });});
 
+// ---------- weather alert ----------
+function renderAlert(a){
+  var box=document.getElementById('wxalert');if(!box)return;
+  if(!a||!a.text){box.style.display='none';return;}
+  document.getElementById('wxalertT').textContent=a.title;
+  document.getElementById('wxalertTx').textContent=a.text+' ('+a.source+')';
+  box.style.display='flex';
+}
+
 // ---------- live status ----------
-renderRoutes(FALLBACK.routes);
-fetch('data.json').then(function(x){return x.json();}).then(function(d){if(d&&d.routes&&d.routes.length)renderRoutes(d.routes);}).catch(function(){});
+renderRoutes(FALLBACK.routes);renderAlert(FALLBACK.alert);
+fetch('data.json').then(function(x){return x.json();}).then(function(d){if(d&&d.routes&&d.routes.length)renderRoutes(d.routes);renderAlert(d.alert);}).catch(function(){});
 
 // ---------- live weather ----------
 function loadWeather(r){

@@ -170,6 +170,7 @@ img,svg,video{max-width:100%}
     <p class="sc-detail" id="stDetail">Closed for winter from both the Skardu and Astore sides; normally reopens in June.</p>
     <p class="sc-meta"><i class="fa-solid fa-circle-check"></i><span id="stMeta">Source: Seasonal status · 12 Nov 2026</span></p>
   </div>
+  <div class="altbox" id="wxalert" style="display:none"><i class="fa-solid fa-cloud-bolt"></i><div id="wxalertTx"></div></div>
   <p class="ans">Closed for winter from both the Skardu and Astore sides; normally reopens in June.</p>
   <p class="ans">Deosai — the 'Land of Giants' — is one of the world's highest plateaus, averaging over 4,000m, famous for Sheosar Lake, wildflowers in July and Himalayan brown bears. That altitude is exactly why its season is short: for more than half the year it is a snowbound wilderness.</p>
   <div class="altbox"><i class="fa-solid fa-triangle-exclamation"></i><div>Want Skardu instead? The S-1 Skardu Road from the KKH stays open in winter — check its live status below.</div></div>
@@ -216,6 +217,8 @@ fetch('data.json').then(function(x){return x.json();}).then(function(d){
   document.getElementById('stReason').textContent=rt.reason;
   document.getElementById('stDetail').textContent=rt.detail;
   document.getElementById('stMeta').textContent='Source: '+rt.source+' \u00B7 updated '+relTime(rt.updatedISO);
+  var ax=document.getElementById('wxalert');
+  if(ax&&d.alert&&d.alert.text){document.getElementById('wxalertTx').innerHTML='<b>'+d.alert.title+'</b> '+d.alert.text+' ('+d.alert.source+')';ax.style.display='flex';}
 }).catch(function(){});
 fetch('https://api.open-meteo.com/v1/forecast?latitude=35.0&longitude=75.22&current=temperature_2m,weather_code,wind_speed_10m&timezone=Asia%2FKarachi')
 .then(function(x){return x.json();}).then(function(d){var c=d.current;

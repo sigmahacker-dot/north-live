@@ -170,6 +170,7 @@ img,svg,video{max-width:100%}
     <p class="sc-detail" id="stDetail">Mansehra district police closed the Naran–Babusar road on 11 Nov after heavy snowfall; it may stay shut for the winter season. Traffic up to Naran remains open.</p>
     <p class="sc-meta"><i class="fa-solid fa-circle-check"></i><span id="stMeta">Source: District police / Dawn, 12 Nov 2026</span></p>
   </div>
+  <div class="altbox" id="wxalert" style="display:none"><i class="fa-solid fa-cloud-bolt"></i><div id="wxalertTx"></div></div>
   <p class="ans">Mansehra district police closed the Naran–Babusar road on 11 Nov after heavy snowfall; it may stay shut for the winter season. Traffic up to Naran remains open.</p>
   <p class="ans">Babusar Top (about 4,170m) is the seasonal shortcut between Naran in the Kaghan Valley and Chilas on the Karakoram Highway. Because it is high, exposed and avalanche-prone in winter, it is one of the first passes in Pakistan to close and one of the last to reopen. Until it opens again in summer, all Gilgit-Baltistan traffic uses the Karakoram Highway.</p>
   <div class="altbox"><i class="fa-solid fa-triangle-exclamation"></i><div>Best alternative while Babusar is closed: the Karakoram Highway via Besham and Chilas — open all year.</div></div>
@@ -216,6 +217,8 @@ fetch('data.json').then(function(x){return x.json();}).then(function(d){
   document.getElementById('stReason').textContent=rt.reason;
   document.getElementById('stDetail').textContent=rt.detail;
   document.getElementById('stMeta').textContent='Source: '+rt.source+' \u00B7 updated '+relTime(rt.updatedISO);
+  var ax=document.getElementById('wxalert');
+  if(ax&&d.alert&&d.alert.text){document.getElementById('wxalertTx').innerHTML='<b>'+d.alert.title+'</b> '+d.alert.text+' ('+d.alert.source+')';ax.style.display='flex';}
 }).catch(function(){});
 fetch('https://api.open-meteo.com/v1/forecast?latitude=35.15&longitude=74.05&current=temperature_2m,weather_code,wind_speed_10m&timezone=Asia%2FKarachi')
 .then(function(x){return x.json();}).then(function(d){var c=d.current;

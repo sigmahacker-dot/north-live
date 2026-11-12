@@ -105,5 +105,11 @@
    "updatedISO": "2026-11-12T08:30:00+05:00"
   }
  ],
- "updated": "2026-11-12T08:30:00+05:00"
+ "alert": {
+  "title": "Weather alert — Gilgit-Baltistan, 12–14 Nov",
+  "text": "Heavy rain with isolated hailstorm and gusty winds (40–50 km/h, gusting to 60) over Gilgit-Baltistan today. Rain and thunderstorm with snow on the hills continue through the morning of 14 Nov. Skardu: rain today (90%), showers on Friday. Gilgit: rain all day today, still wet on Friday. Sat 14 – Sun 15 stay unsettled with rain and snow — the next fully clear day is Wed 18 Nov.",
+  "source": "IMD advisory, 11 Nov 2026 · PMD forecast, 12 Nov 2026",
+  "updatedISO": "2026-11-12T13:00:00+05:00"
+ },
+ "updated": "2026-11-12T13:00:00+05:00"
 }

@@ -164,6 +164,7 @@ img,svg,video{max-width:100%}
   <p class="crumb">Mobile signal guide · Northern Pakistan</p>
   <h1 class="q">Which SIM Works in Hunza?</h1>
   <div class="quickbox"><b>QUICK ANSWER</b>SCOM is the most reliable network in Hunza — and Zong and Jazz both give strong 4G in Karimabad and the main KKH towns.</div>
+  <div class="altbox" id="wxalert" style="display:none"><i class="fa-solid fa-cloud-bolt"></i><div id="wxalertTx"></div></div>
   <p class="ans">Hunza sits on the Karakoram Highway, and its main towns are better connected than most of Gilgit-Baltistan. The gaps appear in the side valleys — Batura, Chapursan, Shimshal — and on the climb to Khunjerab, where every network fades.</p>
   <div class="sigcard"><div class="srow"><span class="ct">S</span><div><div class="nm">SCOM</div><div class="nt">Best data</div></div><div class="br"><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><div class="bt">4/4 bars</div></div></div><div class="srow"><span class="ct">Z</span><div><div class="nm">Zong</div><div class="nt">Strong 4G</div></div><div class="br"><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><div class="bt">4/4 bars</div></div></div><div class="srow"><span class="ct">J</span><div><div class="nm">Jazz</div><div class="nt">Strong 4G</div></div><div class="br"><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><div class="bt">4/4 bars</div></div></div><div class="srow"><span class="ct">T</span><div><div class="nm">Telenor</div><div class="nt">Slow</div></div><div class="br"><span class="bars"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span><div class="bt">2/4 bars</div></div></div><div class="srow"><span class="ct">U</span><div><div class="nm">Ufone</div><div class="nt">Weak</div></div><div class="br"><span class="bars"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span><div class="bt">1/4 bars</div></div></div>
   </div>
@@ -199,5 +200,11 @@ img,svg,video{max-width:100%}
   <a href="https://gbadventure.vip" target="_blank" rel="noopener"><span class="ni"><i class="fa-solid fa-suitcase"></i></span>Tours</a>
 </nav>
 </div>
+<script>
+fetch('data.json').then(function(x){return x.json();}).then(function(d){
+  var ax=document.getElementById('wxalert');
+  if(ax&&d.alert&&d.alert.text){document.getElementById('wxalertTx').innerHTML='<b>'+d.alert.title+'</b> '+d.alert.text+' ('+d.alert.source+')';ax.style.display='flex';}
+}).catch(function(){});
+</script>
 </body>
 </html>

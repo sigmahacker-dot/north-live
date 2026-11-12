@@ -170,6 +170,7 @@ img,svg,video{max-width:100%}
     <p class="sc-detail" id="stDetail">Naran town is reachable and receiving snowfall tourists; the road beyond Bassal towards Babusar is closed by police.</p>
     <p class="sc-meta"><i class="fa-solid fa-circle-check"></i><span id="stMeta">Source: District police / The News, 12 Nov 2026</span></p>
   </div>
+  <div class="altbox" id="wxalert" style="display:none"><i class="fa-solid fa-cloud-bolt"></i><div id="wxalertTx"></div></div>
   <p class="ans">Naran town is reachable and receiving snowfall tourists; the road beyond Bassal towards Babusar is closed by police.</p>
   <p class="ans">Naran is the busy hub of the Kaghan Valley — the jumping-off point for Lake Saiful Muluk, Lalazar and the Babusar road. In November the crowds are gone, the first snow has arrived, and the valley splits in two: Naran itself open for snowfall trips, everything above Bassal closed until summer.</p>
   <div class="altbox"><i class="fa-solid fa-triangle-exclamation"></i><div>Heading to Gilgit-Baltistan? Use the Karakoram Highway via Besham–Chilas while Babusar Top is closed.</div></div>
@@ -216,6 +217,8 @@ fetch('data.json').then(function(x){return x.json();}).then(function(d){
   document.getElementById('stReason').textContent=rt.reason;
   document.getElementById('stDetail').textContent=rt.detail;
   document.getElementById('stMeta').textContent='Source: '+rt.source+' \u00B7 updated '+relTime(rt.updatedISO);
+  var ax=document.getElementById('wxalert');
+  if(ax&&d.alert&&d.alert.text){document.getElementById('wxalertTx').innerHTML='<b>'+d.alert.title+'</b> '+d.alert.text+' ('+d.alert.source+')';ax.style.display='flex';}
 }).catch(function(){});
 fetch('https://api.open-meteo.com/v1/forecast?latitude=34.91&longitude=73.65&current=temperature_2m,weather_code,wind_speed_10m&timezone=Asia%2FKarachi')
 .then(function(x){return x.json();}).then(function(d){var c=d.current;
