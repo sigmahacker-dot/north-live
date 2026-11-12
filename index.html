@@ -3,78 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>North Live — Live Road & Signal Conditions for Northern Pakistan</title>
-<meta name="description" content="Is Babusar open today? Which SIM works in Hunza? Live road status, pass weather and mobile signal reports for Northern Pakistan.">
+<title>North Live — Live Road Status & SIM Signal for Northern Pakistan</title>
+<meta name="description" content="Is Babusar Top open today? Which SIM works in Hunza? Live road status, pass weather and mobile signal reports for Gilgit-Baltistan & Northern Pakistan — North Live, November 2026.">
+<link rel="canonical" href="https://live.gbadventure.vip/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="North Live">
+<meta property="og:title" content="North Live — Live Road Status & SIM Signal for Northern Pakistan">
+<meta property="og:description" content="Live road status, pass weather and mobile signal reports for Gilgit-Baltistan & Northern Pakistan.">
+<meta property="og:url" content="https://live.gbadventure.vip/">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
 :root{
   --g1:#177A44; --g2:#2E9E5B; --deep:#0B3524; --nav:#0C3B2A;
   --ink:#132219; --mut:#6E8272; --bg:#F6FAF7;
   --ok:#16A34A; --okbg:#E6F6EC; --bad:#DC2626; --badbg:#FDECEC; --warn:#B45309; --warnbg:#FCF2DF;
-  --gold:#D9A441; --wa:#1FA855;
-  --sh:0 10px 28px rgba(15,80,45,.09);
+  --gold:#D9A441; --wa:#1FA855; --sh:0 10px 28px rgba(15,80,45,.09);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Poppins,Roboto,sans-serif;color:var(--ink);
   background:linear-gradient(160deg,#DFF3E6 0%,#E9F6EE 45%,#E3F1F6 100%);min-height:100dvh}
 a{text-decoration:none;color:inherit}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 
-/* phone column */
+/* iPhone frame on larger screens */
+.device{position:relative;max-width:430px;margin:0 auto}
+.island{display:none}
 .phone{max-width:430px;margin:0 auto;background:var(--bg);min-height:100dvh;position:relative;
   box-shadow:0 0 60px rgba(11,53,36,.18);padding:0 20px 110px}
-@media(min-width:480px){.phone{border-radius:0}}
-
-/* ribbon */
-.ribbon{margin:0 -20px;background:var(--deep);color:#FFD98A;text-align:center;font-size:11px;font-weight:600;letter-spacing:.05em;padding:7px 10px}
+@media(min-width:520px){
+  body{padding:30px 0 46px}
+  .device{max-width:452px;border:11px solid #101013;border-radius:54px;overflow:hidden;
+    box-shadow:0 40px 90px rgba(7,40,26,.35),0 0 0 2px #2a2a2e}
+  .island{display:block;position:absolute;top:12px;left:50%;transform:translateX(-50%);
+    width:112px;height:30px;border-radius:999px;background:#000;z-index:80}
+  .phone{min-height:0;height:min(880px,calc(100dvh - 112px));overflow-y:auto;box-shadow:none}
+  .phone::-webkit-scrollbar{width:0}
+  .bnav{position:absolute !important}
+  .hbar{padding-top:34px}
+}
 
 /* header */
 .hbar{display:flex;align-items:center;gap:10px;padding:18px 0 4px}
 .logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:19px;color:var(--deep)}
 .logo .tile{width:36px;height:36px;border-radius:12px;background:linear-gradient(145deg,var(--g1),var(--g2));color:#fff;display:grid;place-items:center;font-size:16px;box-shadow:0 6px 14px rgba(23,122,68,.35)}
 .logo em{font-style:normal;color:var(--g1)}
-.hbtn{margin-left:auto;width:42px;height:42px;border-radius:50%;background:#fff;box-shadow:var(--sh);display:grid;place-items:center;font-size:17px;position:relative}
+.updated{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:12px;color:var(--mut);font-weight:500}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);flex:none;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,163,74,.45)}70%{box-shadow:0 0 0 8px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+.hbtn{width:42px;height:42px;border-radius:50%;background:#fff;box-shadow:var(--sh);display:grid;place-items:center;font-size:16px;color:var(--deep);position:relative;flex:none}
 .hbtn::after{content:'';position:absolute;top:10px;right:11px;width:8px;height:8px;border-radius:50%;background:var(--bad);border:2px solid #fff}
 
 .greet{margin-top:16px;font-size:13.5px;color:var(--mut);font-weight:500}
 h1{font-size:27px;font-weight:800;line-height:1.22;color:var(--deep);margin-top:3px;letter-spacing:-.01em}
 
-/* hero card */
+/* hero */
 .hero{margin-top:18px;border-radius:28px;padding:22px;color:#fff;position:relative;overflow:hidden;
   background:linear-gradient(140deg,#146C3C 0%,#1E8A4C 55%,#2E9E5B 100%);box-shadow:0 18px 34px rgba(20,108,60,.35)}
 .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.09)}
 .hero::before{width:190px;height:190px;right:-60px;top:-70px}
 .hero::after{width:120px;height:120px;right:52px;bottom:-64px}
 .hero .lbl{font-size:11.5px;font-weight:600;letter-spacing:.14em;opacity:.85}
-.hero .big{font-size:29px;font-weight:800;margin-top:6px;line-height:1.2;position:relative;z-index:1}
-.hero .sub{margin-top:8px;font-size:13.5px;opacity:.92;position:relative;z-index:1}
+.hero .big{font-size:28px;font-weight:800;margin-top:6px;line-height:1.22;position:relative;z-index:1}
+.hero .sub{margin-top:9px;font-size:13px;opacity:.94;position:relative;z-index:1;display:flex;gap:14px;flex-wrap:wrap}
+.hero .sub span{display:inline-flex;align-items:center;gap:6px}
 .hero .cta{margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--g1);font-weight:700;font-size:13.5px;padding:11px 18px;border-radius:999px;position:relative;z-index:1;box-shadow:0 8px 18px rgba(0,0,0,.18);transition:transform .15s}
 .hero .cta:active{transform:scale(.96)}
 
 /* quick actions */
 .qa{display:flex;justify-content:space-between;margin-top:22px;padding:0 4px}
 .qa a{display:flex;flex-direction:column;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--ink)}
-.qa .ic{width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:var(--sh);display:grid;place-items:center;font-size:21px;transition:transform .15s}
+.qa .ic{width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:var(--sh);display:grid;place-items:center;font-size:20px;color:var(--g1);transition:transform .15s}
 .qa a:active .ic{transform:scale(.92)}
 .qa .ic.hot{background:linear-gradient(145deg,var(--g1),var(--g2));color:#fff}
 
 /* alert row */
 .alertrow{margin-top:22px;background:#fff;border-radius:22px;box-shadow:var(--sh);padding:14px 15px;display:flex;align-items:center;gap:12px}
-.tile{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:20px;flex:none}
-.tile.red{background:var(--badbg)} .tile.green{background:var(--okbg)} .tile.amber{background:var(--warnbg)}
+.tile{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:19px;flex:none}
+.tile.red{background:var(--badbg);color:var(--bad)} .tile.green{background:var(--okbg);color:var(--ok)} .tile.amber{background:var(--warnbg);color:var(--warn)}
 .alertrow .tt{font-size:14px;font-weight:600;line-height:1.35}
-.alertrow .ts{font-size:12px;color:var(--mut);margin-top:1px}
-.alertrow .chev{margin-left:auto;color:#B9C8BE;font-size:18px;flex:none}
+.alertrow .ts{font-size:12px;color:var(--mut);margin-top:1px;line-height:1.45}
+.alertrow .chev{margin-left:auto;color:#B9C8BE;flex:none}
 
-/* section head */
-.shead{display:flex;align-items:center;margin:26px 0 13px}
+/* section head + filters */
+.shead{display:flex;align-items:center;margin:26px 0 13px;scroll-margin-top:14px}
 .shead h2{font-size:18.5px;font-weight:700;color:var(--deep)}
 .shead a{margin-left:auto;font-size:13px;font-weight:600;color:var(--g1)}
-
-/* filter pills */
-.fpills{display:flex;gap:8px;margin-bottom:13px}
+.fpills{display:flex;gap:8px;margin-bottom:13px;flex-wrap:wrap}
 .fpill{padding:8px 16px;border-radius:999px;background:#fff;box-shadow:var(--sh);font-size:13px;font-weight:600;color:var(--mut);transition:all .15s}
 .fpill.on{background:var(--deep);color:#fff}
 
@@ -87,12 +105,14 @@ h1{font-size:27px;font-weight:800;line-height:1.22;color:var(--deep);margin-top:
 .pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;padding:5px 11px;border-radius:999px}
 .pill.open{background:var(--okbg);color:var(--ok)} .pill.closed{background:var(--badbg);color:var(--bad)} .pill.caution{background:var(--warnbg);color:var(--warn)}
 .rrow .tm{display:block;font-size:11px;color:var(--mut);margin-top:5px}
-.rrow .wx{display:block;font-size:11.5px;margin-top:2px}
+.rrow .wx{display:block;font-size:11.5px;margin-top:3px;color:var(--mut)}
+.rrow .wx i{color:var(--g1);margin-right:4px}
 .noresult{display:none;text-align:center;color:var(--mut);font-size:13px;padding:14px 0}
 
 /* signal card */
 .sigcard{background:#fff;border-radius:26px;box-shadow:var(--sh);padding:20px}
 .sigcard h3{font-size:16.5px;font-weight:700;color:var(--deep)}
+.sigcard h3 i{color:var(--g1);margin-right:6px}
 .sigcard p{font-size:12.5px;color:var(--mut);margin-top:4px;line-height:1.5}
 .placepills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
 .ppill{padding:8px 14px;border-radius:999px;background:var(--bg);border:1.5px solid #E1EDE4;font-size:12.5px;font-weight:600;color:var(--mut);transition:all .15s}
@@ -109,22 +129,24 @@ h1{font-size:27px;font-weight:800;line-height:1.22;color:var(--deep);margin-top:
 .bars i.on{background:var(--g2)}
 .br .bt{font-size:11px;font-weight:600;color:var(--g1);margin-top:3px}
 .br .bt.no{color:var(--bad)}
+.guidelink{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-size:13px;font-weight:700;color:var(--g1)}
 
 /* GB card */
 .gbcard{margin-top:22px;border-radius:28px;padding:22px;color:#fff;position:relative;overflow:hidden;
   background:linear-gradient(150deg,#3A2C07 0%,#7A5A14 55%,#B9862F 130%);box-shadow:0 16px 30px rgba(122,90,20,.35)}
-.gbcard::before{content:'🏔';position:absolute;right:14px;top:8px;font-size:64px;opacity:.28}
+.gbcard .mtn{position:absolute;right:16px;top:12px;font-size:56px;opacity:.25}
 .gbcard .lbl{font-size:11px;font-weight:600;letter-spacing:.14em;color:#FFE1A1}
-.gbcard h3{font-size:21px;font-weight:800;margin-top:6px;line-height:1.25;max-width:250px}
+.gbcard h3{font-size:20px;font-weight:800;margin-top:6px;line-height:1.25;max-width:250px;position:relative}
 .gbcard p{font-size:13px;opacity:.92;margin-top:7px;max-width:270px;line-height:1.55}
 .gbcard .cta{margin-top:15px;display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#241B08;font-weight:700;font-size:13.5px;padding:11px 18px;border-radius:999px;box-shadow:0 8px 18px rgba(0,0,0,.25)}
 .gbcard .cta:active{transform:scale(.96)}
 
-/* big report button */
+/* big button */
 .bigbtn{margin-top:20px;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
   background:linear-gradient(145deg,var(--g1),var(--g2));color:#fff;font-weight:700;font-size:15.5px;
   padding:17px;border-radius:999px;box-shadow:0 14px 28px rgba(23,122,68,.4);transition:transform .15s}
 .bigbtn:active{transform:scale(.98)}
+.bigbtn .fa-whatsapp{font-size:19px}
 
 .foot{margin-top:24px;text-align:center;font-size:11.5px;color:var(--mut);line-height:1.7;padding:0 8px}
 .foot b{color:var(--deep)}
@@ -133,11 +155,11 @@ h1{font-size:27px;font-weight:800;line-height:1.22;color:var(--deep);margin-top:
 .bnav{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;width:min(394px,calc(100% - 28px));
   background:var(--nav);border-radius:999px;display:flex;align-items:center;justify-content:space-around;
   padding:10px 8px;box-shadow:0 18px 36px rgba(7,40,26,.45);z-index:60}
-.bnav a{display:flex;flex-direction:column;align-items:center;gap:2px;color:#9DBFA9;font-size:10px;font-weight:500;padding:2px 8px}
-.bnav a .ni{font-size:19px;line-height:1}
+.bnav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:#9DBFA9;font-size:10px;font-weight:500;padding:2px 8px}
+.bnav a .ni{font-size:18px;line-height:1}
 .bnav a.on{color:#fff}
 .bnav .center{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--g2),var(--g1));
-  display:grid;place-items:center;font-size:22px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
+  display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
 
 /* reveal */
@@ -146,132 +168,185 @@ h1{font-size:27px;font-weight:800;line-height:1.22;color:var(--deep);margin-top:
 </style>
 </head>
 <body>
+<div class="device">
+<div class="island"></div>
 <div class="phone">
 
-  <div class="ribbon">DESIGN PREVIEW — SAMPLE DATA · Asal live data launch par lagega</div>
-
   <div class="hbar">
-    <a class="logo" href="#"><span class="tile">▲</span>North<em>Live</em></a>
-    <a class="hbtn" href="https://wa.me/923555101279?text=North%20Live%20report%3A%20" target="_blank" rel="noopener" aria-label="Alerts">🔔</a>
+    <a class="logo" href="index.html"><span class="tile"><i class="fa-solid fa-mountain"></i></span>North<em>Live</em></a>
+    <div class="updated"><span class="dot"></span><span id="updText">Updated 12 Nov 2026</span></div>
+    <a class="hbtn" href="https://wa.me/923555101279?text=North%20Live%20report%3A%20" target="_blank" rel="noopener" aria-label="Report an update"><i class="fa-solid fa-bell"></i></a>
   </div>
 
-  <p class="greet" id="greet">Good morning 👋</p>
+  <p class="greet" id="greet">Good morning</p>
   <h1>Is your road<br>open today?</h1>
 
   <div class="hero reveal">
     <div class="lbl">TODAY IN THE NORTH</div>
-    <div class="big">4 routes open<br>2 closed</div>
-    <div class="sub">❄️ Babusar −6° &nbsp;·&nbsp; ☀️ Khunjerab −2° &nbsp;·&nbsp; ⛅ Skardu 3°</div>
-    <a class="cta" href="#routes">Check a route →</a>
+    <div class="big" id="heroCounts">2 routes open<br>2 closed</div>
+    <div class="sub">
+      <span><i class="fa-solid fa-snowflake"></i> Babusar <b id="hw-babusar">…</b></span>
+      <span><i class="fa-solid fa-temperature-half"></i> Khunjerab <b id="hw-kkh-gilgit-khunjerab">…</b></span>
+      <span><i class="fa-solid fa-temperature-half"></i> Skardu <b id="hw-skardu-road">…</b></span>
+    </div>
+    <a class="cta" href="#routes">Check a route <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 
   <div class="qa reveal">
-    <a href="https://wa.me/923555101279?text=North%20Live%20report%3A%20" target="_blank" rel="noopener"><span class="ic hot">📍</span>Report</a>
-    <a href="#routes"><span class="ic">🛣️</span>Routes</a>
-    <a href="#signal"><span class="ic">📶</span>Signal</a>
-    <a href="#book"><span class="ic">🎒</span>Book Tour</a>
+    <a href="https://wa.me/923555101279?text=North%20Live%20report%3A%20" target="_blank" rel="noopener"><span class="ic hot"><i class="fa-solid fa-location-dot"></i></span>Report</a>
+    <a href="#routes"><span class="ic"><i class="fa-solid fa-route"></i></span>Routes</a>
+    <a href="#signal"><span class="ic"><i class="fa-solid fa-tower-cell"></i></span>Signal</a>
+    <a href="#book"><span class="ic"><i class="fa-solid fa-suitcase"></i></span>Book Tour</a>
   </div>
 
-  <div class="alertrow reveal">
-    <span class="tile red">⚠️</span>
-    <div><div class="tt">KKH — landslide near Chilas</div><div class="ts">One-way traffic · confirmed 2h ago by 3 drivers</div></div>
-    <span class="chev">›</span>
-  </div>
+  <a class="alertrow reveal" href="babusar-top-road-status.html">
+    <span class="tile red"><i class="fa-solid fa-triangle-exclamation"></i></span>
+    <div><div class="tt">Babusar Top — closed by police</div><div class="ts">Heavy snowfall · closed 11 Nov for the winter season — use the KKH via Chilas instead</div></div>
+    <span class="chev"><i class="fa-solid fa-arrow-right"></i></span>
+  </a>
 
-  <div class="shead reveal" id="routes"><h2>Live Routes</h2><a href="#routes">See All →</a></div>
+  <div class="shead reveal" id="routes"><h2>Live Routes</h2><a href="#routes">See All <i class="fa-solid fa-arrow-right"></i></a></div>
   <div class="fpills reveal">
     <button class="fpill on" data-f="all">All</button>
     <button class="fpill" data-f="open">Open</button>
     <button class="fpill" data-f="caution">Caution</button>
     <button class="fpill" data-f="closed">Closed</button>
   </div>
-  <div id="routelist">
-    <div class="rrow reveal" data-s="open"><span class="tile green">🛣️</span>
-      <div><div class="tt">KKH — Chilas to Gilgit</div><div class="ts">Dry &amp; clear · normal traffic both ways</div></div>
-      <div class="rt"><span class="pill open">OPEN</span><span class="tm">25 min ago · 5 reports</span><span class="wx">☀️ 8°C</span></div></div>
-    <div class="rrow reveal" data-s="open"><span class="tile green">🏔️</span>
-      <div><div class="tt">KKH — Gilgit to Khunjerab</div><div class="ts">Clear to the border · cold wind at the pass</div></div>
-      <div class="rt"><span class="pill open">OPEN</span><span class="tm">40 min ago · 3 reports</span><span class="wx">☀️ −2°C</span></div></div>
-    <div class="rrow reveal" data-s="caution"><span class="tile amber">⛏️</span>
-      <div><div class="tt">Skardu Road (S-1)</div><div class="ts">Rockfall clearing near Stak · expect 30–45 min delay</div></div>
-      <div class="rt"><span class="pill caution">CAUTION</span><span class="tm">1h ago · 2 reports</span><span class="wx">⛅ 3°C</span></div></div>
-    <div class="rrow reveal" data-s="caution"><span class="tile amber">🧊</span>
-      <div><div class="tt">Gilgit to Ghizer</div><div class="ts">Icy patches after Gahkuch · drive slow before 10am</div></div>
-      <div class="rt"><span class="pill caution">CAUTION</span><span class="tm">3h ago · 1 report</span><span class="wx">🌥 −4°C</span></div></div>
-    <div class="rrow reveal" data-s="closed"><span class="tile red">❄️</span>
-      <div><div class="tt">Babusar Top</div><div class="ts">Seasonal snow · closed for winter — use KKH instead</div></div>
-      <div class="rt"><span class="pill closed">CLOSED</span><span class="tm">2h ago · 4 reports</span><span class="wx">❄️ −6°C</span></div></div>
-    <div class="rrow reveal" data-s="closed"><span class="tile red">🌨️</span>
-      <div><div class="tt">Deosai Plains</div><div class="ts">Snow covered both sides · reopens in June</div></div>
-      <div class="rt"><span class="pill closed">CLOSED</span><span class="tm">5h ago · official</span><span class="wx">🌨 −9°C</span></div></div>
-  </div>
-  <p class="noresult" id="noresult">Is filter mein koi route nahi.</p>
+  <div id="routelist"></div>
+  <p class="noresult" id="noresult">No routes in this filter right now.</p>
 
-  <div class="shead reveal" id="signal"><h2>Signal Checker</h2><a href="#signal">All places →</a></div>
+  <div class="shead reveal" id="signal"><h2>Signal Checker</h2><a href="#signal">All places <i class="fa-solid fa-arrow-right"></i></a></div>
   <div class="sigcard reveal">
-    <h3>📶 Which SIM works there?</h3>
-    <p>Signal strength per carrier — reported by travellers who were actually there.</p>
+    <h3><i class="fa-solid fa-tower-cell"></i>Which SIM works there?</h3>
+    <p>Signal strength per carrier — SCOM, Zong, Jazz, Telenor and Ufone, reported by travellers who were actually there.</p>
     <div class="placepills" id="placepills">
-      <button class="ppill on" data-p="karimabad">Karimabad</button>
-      <button class="ppill" data-p="skardu">Skardu</button>
-      <button class="ppill" data-p="gilgit">Gilgit</button>
-      <button class="ppill" data-p="naran">Naran</button>
+      <a class="ppill on" data-p="karimabad" href="which-sim-works-in-hunza.html">Karimabad</a>
+      <a class="ppill" data-p="skardu" href="which-sim-works-in-skardu.html">Skardu</a>
+      <a class="ppill" data-p="gilgit" href="which-sim-works-in-gilgit.html">Gilgit</a>
+      <a class="ppill" data-p="naran" href="which-sim-works-in-naran.html">Naran</a>
     </div>
     <div id="sigrows"></div>
+    <a class="guidelink" id="guidelink" href="which-sim-works-in-hunza.html">Full Hunza signal guide <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 
   <div class="gbcard reveal" id="book">
+    <span class="mtn"><i class="fa-solid fa-mountain"></i></span>
     <div class="lbl">GB ADVENTURE</div>
     <h3>This route is open — go see it.</h3>
     <p>Guided tours across Gilgit-Baltistan with local drivers who know every turn of these roads.</p>
-    <a class="cta" href="https://gbadventure.vip" target="_blank" rel="noopener">Book a tour →</a>
+    <a class="cta" href="https://gbadventure.vip" target="_blank" rel="noopener">Book a tour <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 
-  <a class="bigbtn reveal" href="https://wa.me/923555101279?text=North%20Live%20report%3A%20" target="_blank" rel="noopener">💬 Report on WhatsApp →</a>
+  <a class="bigbtn reveal" href="https://wa.me/923555101279?text=North%20Live%20report%3A%20" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Report on WhatsApp <i class="fa-solid fa-arrow-right"></i></a>
 
-  <p class="foot"><b>North Live</b> — a GB Adventure service.<br>Statuses are reports, not guarantees — check locally before a high pass in bad weather.<br>Design preview · all data on this page is sample data.</p>
+  <p class="foot"><b>North Live</b> — a GB Adventure service.<br>Launch data — statuses from public reports &amp; officials, 12 Nov 2026. Report changes on WhatsApp.<br>Statuses are reports, not guarantees — check locally before a high pass in bad weather.</p>
 </div>
 
 <nav class="bnav">
-  <a href="#" class="on"><span class="ni">🏠</span>Home</a>
-  <a href="#routes"><span class="ni">🛣️</span>Routes</a>
-  <a class="center" href="https://wa.me/923555101279?text=North%20Live%20report%3A%20" target="_blank" rel="noopener" aria-label="Report">＋</a>
-  <a href="#signal"><span class="ni">📶</span>Signal</a>
-  <a href="#book"><span class="ni">🎒</span>Tours</a>
+  <a href="index.html" class="on"><span class="ni"><i class="fa-solid fa-house"></i></span>Home</a>
+  <a href="#routes"><span class="ni"><i class="fa-solid fa-route"></i></span>Routes</a>
+  <a class="center" href="https://wa.me/923555101279?text=North%20Live%20report%3A%20" target="_blank" rel="noopener" aria-label="Report on WhatsApp"><i class="fa-solid fa-plus"></i></a>
+  <a href="#signal"><span class="ni"><i class="fa-solid fa-tower-cell"></i></span>Signal</a>
+  <a href="https://gbadventure.vip" target="_blank" rel="noopener"><span class="ni"><i class="fa-solid fa-suitcase"></i></span>Tours</a>
 </nav>
+</div>
 
 <script>
-// greeting by time
-var h=new Date().getHours(),g=document.getElementById('greet');
-g.textContent=(h<12?'Good morning 👋':h<17?'Good afternoon 👋':'Good evening 👋');
+// ---------- embedded fallback (identical to data.json) ----------
+var FALLBACK={routes:[
+{id:"babusar",name:"Babusar Top",slug:"babusar-top",status:"closed",reason:"Heavy snowfall — closed by police",detail:"Mansehra district police closed the Naran–Babusar road on 11 Nov after heavy snowfall; it may stay shut for the winter season. Traffic up to Naran remains open.",source:"District police / Dawn, 12 Nov 2026",reports:4,updatedISO:"2026-11-12T08:30:00+05:00",lat:35.15,lon:74.05},
+{id:"kkh-chilas-gilgit",name:"KKH — Chilas to Gilgit",slug:"kkh-chilas-gilgit",status:"open",reason:"Dry & clear",detail:"Normal traffic both ways; the year-round route into Gilgit-Baltistan while Babusar is closed.",source:"North Live launch report",reports:5,updatedISO:"2026-11-12T08:30:00+05:00",lat:35.42,lon:74.09},
+{id:"kkh-gilgit-khunjerab",name:"KKH — Gilgit to Khunjerab",slug:"kkh-gilgit-khunjerab",status:"open",reason:"Clear to the border",detail:"Open for all traffic; expect sub-zero temperatures and wind at Khunjerab Pass (4,693m).",source:"North Live launch report",reports:3,updatedISO:"2026-11-12T08:30:00+05:00",lat:36.85,lon:75.42},
+{id:"skardu-road",name:"Skardu Road (S-1)",slug:"skardu",status:"caution",reason:"Winter rockfall risk",detail:"Advisory: rockfall-prone stretches near Stak — travel in daylight and check before night driving.",source:"North Live advisory",reports:2,updatedISO:"2026-11-12T08:30:00+05:00",lat:35.30,lon:75.63},
+{id:"deosai",name:"Deosai Plains",slug:"deosai",status:"closed",reason:"Snow covered — seasonal closure",detail:"Closed for winter from both the Skardu and Astore sides; normally reopens in June.",source:"Seasonal status",reports:0,updatedISO:"2026-11-12T08:30:00+05:00",lat:35.00,lon:75.22},
+{id:"naran",name:"Naran & Kaghan Valley",slug:"naran",status:"caution",reason:"Open to Naran — snow beyond",detail:"Naran town is reachable and receiving snowfall tourists; the road beyond Bassal towards Babusar is closed by police.",source:"District police / The News, 12 Nov 2026",reports:3,updatedISO:"2026-11-12T08:30:00+05:00",lat:34.91,lon:73.65},
+{id:"gilgit-ghizer",name:"Gilgit to Ghizer",slug:"gilgit-ghizer",status:"caution",reason:"Icy patches in the morning",detail:"Advisory: icy patches after Gahkuch before 10am in winter — drive slow.",source:"North Live advisory",reports:1,updatedISO:"2026-11-12T08:30:00+05:00",lat:36.18,lon:73.77},
+{id:"fairy-meadows",name:"Fairy Meadows (Raikot)",slug:"fairy-meadows",status:"caution",reason:"Jeep track — winter conditions",detail:"The Raikot–Tattu jeep track runs in winter only in good weather; confirm with local jeep operators before going.",source:"North Live advisory",reports:1,updatedISO:"2026-11-12T08:30:00+05:00",lat:35.38,lon:74.60}
+]};
 
-// route filter
-var pills=document.querySelectorAll('.fpill'),rows=document.querySelectorAll('.rrow'),nr=document.getElementById('noresult');
-pills.forEach(function(p){p.addEventListener('click',function(){
-  pills.forEach(function(x){x.classList.remove('on')});p.classList.add('on');
-  var f=p.getAttribute('data-f'),shown=0;
-  rows.forEach(function(r){var hit=f==='all'||r.getAttribute('data-s')===f;r.style.display=hit?'flex':'none';if(hit)shown++});
-  nr.style.display=shown?'none':'block';
-})});
-
-// signal checker
 var SIG={
- karimabad:[['S','SCOM',4,'Best data'],['Z','Zong',2,'Slow 3G'],['T','Telenor',1,'Calls only'],['U','Ufone',0,'No service']],
- skardu:[['S','SCOM',4,'Best data'],['Z','Zong',3,'Good 4G'],['T','Telenor',2,'Slow'],['U','Ufone',1,'Weak']],
- gilgit:[['S','SCOM',4,'Full'],['Z','Zong',4,'Full 4G'],['T','Telenor',3,'Good'],['U','Ufone',2,'Slow']],
- naran:[['Z','Zong',4,'Best here'],['T','Telenor',3,'Good'],['S','SCOM',2,'Patchy'],['U','Ufone',1,'Weak']]
+ karimabad:[["SCOM",4,"Best data"],["Zong",4,"Strong 4G"],["Jazz",4,"Strong 4G"],["Telenor",2,"Slow"],["Ufone",1,"Weak"]],
+ skardu:[["SCOM",4,"Best data"],["Zong",3,"Good 4G"],["Jazz",3,"Good 4G"],["Telenor",2,"Slow"],["Ufone",1,"Weak"]],
+ gilgit:[["SCOM",4,"Best data"],["Zong",4,"Strong 4G"],["Jazz",4,"Strong 4G"],["Telenor",3,"Good"],["Ufone",2,"Slow"]],
+ naran:[["Zong",4,"Best here"],["Telenor",3,"Good"],["Jazz",3,"Good"],["SCOM",1,"Patchy — GB network"],["Ufone",2,"Slow"]]
 };
+var SIGPAGE={karimabad:["which-sim-works-in-hunza.html","Hunza"],skardu:["which-sim-works-in-skardu.html","Skardu"],gilgit:["which-sim-works-in-gilgit.html","Gilgit"],naran:["which-sim-works-in-naran.html","Naran"]};
+
+// ---------- helpers ----------
+function wxIcon(c){if(c===0)return 'fa-sun';if(c<=2)return 'fa-cloud-sun';if(c===3)return 'fa-cloud';if(c===45||c===48)return 'fa-smog';if((c>=71&&c<=77)||c===85||c===86)return 'fa-snowflake';if(c>=95)return 'fa-cloud-bolt';if(c>=51)return 'fa-cloud-rain';return 'fa-cloud';}
+function wxLabel(c){if(c===0)return 'Clear sky';if(c===1)return 'Mostly clear';if(c===2)return 'Partly cloudy';if(c===3)return 'Overcast';if(c===45||c===48)return 'Foggy';if((c>=71&&c<=77)||c===85||c===86)return 'Snow';if(c>=95)return 'Thunderstorm';if(c>=80&&c<=82)return 'Rain showers';if(c>=61&&c<=67)return 'Rain';if(c>=51&&c<=57)return 'Drizzle';return 'Cloudy';}
+function relTime(iso){var s=(Date.now()-new Date(iso).getTime())/1e3;if(isNaN(s))return '';if(s<3600)return Math.max(1,Math.round(s/60))+' min ago';if(s<86400)return Math.round(s/3600)+'h ago';return Math.round(s/86400)+'d ago';}
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function tileFor(r){if(r.status==='open')return '<span class="tile green"><i class="fa-solid fa-route"></i></span>';if(r.status==='caution')return '<span class="tile amber"><i class="fa-solid fa-triangle-exclamation"></i></span>';if(/snow/i.test(r.reason))return '<span class="tile red"><i class="fa-solid fa-snowflake"></i></span>';return '<span class="tile red"><i class="fa-solid fa-ban"></i></span>';}
+
+// ---------- greeting ----------
+var hr=new Date().getHours();
+document.getElementById('greet').textContent=(hr<12?'Good morning':hr<17?'Good afternoon':'Good evening');
+
+// ---------- routes ----------
+var currentFilter='all';
+function renderRoutes(routes){
+  var list=document.getElementById('routelist'),html='',o=0,c=0,w=0,newest=0,i,r;
+  for(i=0;i<routes.length;i++){r=routes[i];
+    if(r.status==='open')o++;else if(r.status==='closed')c++;else w++;
+    var t=new Date(r.updatedISO).getTime();if(t>newest)newest=t;
+    html+='<a class="rrow reveal" data-s="'+r.status+'" href="'+r.slug+'-road-status.html">'+tileFor(r)
+      +'<div><div class="tt">'+esc(r.name)+'</div><div class="ts">'+esc(r.reason)+'</div></div>'
+      +'<div class="rt"><span class="pill '+r.status+'">'+r.status.toUpperCase()+'</span>'
+      +'<span class="tm">'+relTime(r.updatedISO)+(r.reports>0?' · '+r.reports+' reports':' · seasonal')+'</span>'
+      +'<span class="wx" id="wx-'+r.id+'"><i class="fa-solid fa-temperature-half"></i>live weather</span></div></a>';
+  }
+  list.innerHTML=html;
+  document.getElementById('heroCounts').innerHTML=o+' routes open<br>'+c+' closed'+(w?' · '+w+' caution':'');
+  if(newest)document.getElementById('updText').textContent='Updated '+relTime(new Date(newest).toISOString());
+  applyFilter();observeReveals();
+}
+function applyFilter(){
+  var rows=document.querySelectorAll('#routelist .rrow'),shown=0,i;
+  for(i=0;i<rows.length;i++){var hit=currentFilter==='all'||rows[i].getAttribute('data-s')===currentFilter;rows[i].style.display=hit?'flex':'none';if(hit)shown++;}
+  document.getElementById('noresult').style.display=shown?'none':'block';
+}
+document.querySelectorAll('.fpill').forEach(function(p){p.addEventListener('click',function(){
+  document.querySelectorAll('.fpill').forEach(function(x){x.classList.remove('on')});p.classList.add('on');
+  currentFilter=p.getAttribute('data-f');applyFilter();
+});});
+
+// ---------- live status ----------
+renderRoutes(FALLBACK.routes);
+fetch('data.json').then(function(x){return x.json();}).then(function(d){if(d&&d.routes&&d.routes.length)renderRoutes(d.routes);}).catch(function(){});
+
+// ---------- live weather ----------
+function loadWeather(r){
+  fetch('https://api.open-meteo.com/v1/forecast?latitude='+r.lat+'&longitude='+r.lon+'&current=temperature_2m,weather_code,wind_speed_10m&timezone=Asia%2FKarachi')
+  .then(function(x){return x.json();}).then(function(d){var c=d.current,temp=Math.round(c.temperature_2m);
+    var el=document.getElementById('wx-'+r.id);
+    if(el)el.innerHTML='<i class="fa-solid '+wxIcon(c.weather_code)+'"></i>'+temp+'° · '+wxLabel(c.weather_code);
+    var hw=document.getElementById('hw-'+r.id);
+    if(hw)hw.textContent=temp+'°';
+  }).catch(function(){});
+}
+FALLBACK.routes.forEach(loadWeather);
+
+// ---------- signal checker ----------
 var srows=document.getElementById('sigrows');
-function renderSig(k){srows.innerHTML=SIG[k].map(function(r){
-  var b='';for(var i=1;i<=4;i++)b+='<i class="'+(i<=r[2]?'on':'')+'"></i>';
-  return '<div class="srow"><span class="ct">'+r[0]+'</span><div><div class="nm">'+r[1]+'</div><div class="nt">'+r[3]+'</div></div><div class="br"><span class="bars">'+b+'</span><div class="bt'+(r[2]===0?' no':'')+'">'+(r[2]===0?'No signal':r[2]+'/4 bars')+'</div></div></div>'}).join('')}
-document.querySelectorAll('.ppill').forEach(function(p){p.addEventListener('click',function(){
-  document.querySelectorAll('.ppill').forEach(function(x){x.classList.remove('on')});p.classList.add('on');renderSig(p.getAttribute('data-p'))})});
+function renderSig(k){
+  srows.innerHTML=SIG[k].map(function(r){
+    var b='';for(var i=1;i<=4;i++)b+='<i class="'+(i<=r[1]?'on':'')+'"></i>';
+    return '<div class="srow"><span class="ct">'+r[0].charAt(0)+'</span><div><div class="nm">'+r[0]+'</div><div class="nt">'+r[2]+'</div></div><div class="br"><span class="bars">'+b+'</span><div class="bt'+(r[1]===0?' no':'')+'">'+(r[1]===0?'No signal':r[1]+'/4 bars')+'</div></div></div>';
+  }).join('');
+  var g=document.getElementById('guidelink');g.href=SIGPAGE[k][0];g.innerHTML='Full '+SIGPAGE[k][1]+' signal guide <i class="fa-solid fa-arrow-right"></i>';
+}
+document.querySelectorAll('.ppill').forEach(function(p){p.addEventListener('click',function(ev){
+  ev.preventDefault();
+  document.querySelectorAll('.ppill').forEach(function(x){x.classList.remove('on')});p.classList.add('on');
+  renderSig(p.getAttribute('data-p'));
+});});
 renderSig('karimabad');
 
-// reveal on scroll
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+// ---------- reveal on scroll ----------
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:.1}):null;
+function observeReveals(){document.querySelectorAll('.reveal:not(.visible)').forEach(function(el){if(io)io.observe(el);else el.classList.add('visible');});}
+observeReveals();
 </script>
 </body>
 </html>
