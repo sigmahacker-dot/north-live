@@ -186,7 +186,7 @@ ROUTE_EXTRA = {
         "sig": "naran", "related": ["babusar", "kkh-chilas-gilgit", "deosai"],
         "faqs": [
             ["Is Naran open today?",
-             "Yes — Naran town is reachable by road and is receiving tourists coming for the early snowfall (reports, 12 November 2026). The closure in the valley is further up, beyond Bassal towards Babusar Top."],
+             "Yes — Naran town is reachable by road and is receiving tourists coming for the early snowfall (District police / The News, 12 November 2026). The closure in the valley is further up, beyond Bassal towards Babusar Top."],
             ["Can I drive from Naran to Babusar Top now?",
              "No. District police closed the road beyond Bassal on 11 November 2026 after heavy snowfall made the climb to Babusar Top dangerous. The pass is expected to stay closed for the winter season."],
             ["Does the road to Naran close in winter?",
@@ -482,7 +482,7 @@ fetch('data.json').then(function(x){return x.json();}).then(function(d){
   var p=document.getElementById('stPill');p.className='pill '+rt.status;p.textContent=rt.status.toUpperCase();
   document.getElementById('stReason').textContent=rt.reason;
   document.getElementById('stDetail').textContent=rt.detail;
-  document.getElementById('stMeta').textContent=rt.source+(rt.reports>0?' \\u00B7 '+rt.reports+' reports':'')+' \\u00B7 updated '+relTime(rt.updatedISO);
+  document.getElementById('stMeta').textContent='Source: '+rt.source+' \\u00B7 updated '+relTime(rt.updatedISO);
 }).catch(function(){});
 fetch('https://api.open-meteo.com/v1/forecast?latitude=__LAT__&longitude=__LON__&current=temperature_2m,weather_code,wind_speed_10m&timezone=Asia%2FKarachi')
 .then(function(x){return x.json();}).then(function(d){var c=d.current;
@@ -505,8 +505,8 @@ def route_page(r, routes_by_id):
     fname = r["slug"] + "-road-status.html"
     canonical = BASE + "/" + fname
     desc = (r["name"] + " road update today — open or closed? Live status: " + r["reason"] +
-            ". Current weather, confirmed traveller reports and answers — North Live, November 2026.")
-    meta = r["source"] + (" · " + str(r["reports"]) + " reports" if r["reports"] > 0 else "") + " · Updated 12 Nov 2026"
+            ". Current weather and answers — North Live, November 2026.")
+    meta = "Source: " + r["source"] + ("" if "2026" in r["source"] else " · 12 Nov 2026")
     sig = SIGNALS[ex["sig"]]
     alt = ""
     if ex["alt"]:

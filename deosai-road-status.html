@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Is Deosai Open Today? Live Road Status — North Live</title>
-<meta name="description" content="Deosai Plains road update today — open or closed? Live status: Snow covered — seasonal closure. Current weather, confirmed traveller reports and answers — North Live, November 2026.">
+<meta name="description" content="Deosai Plains road update today — open or closed? Live status: Snow covered — seasonal closure. Current weather and answers — North Live, November 2026.">
 <link rel="canonical" href="https://live.gbadventure.vip/deosai-road-status.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="North Live">
 <meta property="og:title" content="Is Deosai Open Today? Live Road Status — North Live">
-<meta property="og:description" content="Deosai Plains road update today — open or closed? Live status: Snow covered — seasonal closure. Current weather, confirmed traveller reports and answers — North Live, November 2026.">
+<meta property="og:description" content="Deosai Plains road update today — open or closed? Live status: Snow covered — seasonal closure. Current weather and answers — North Live, November 2026.">
 <meta property="og:url" content="https://live.gbadventure.vip/deosai-road-status.html">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -157,7 +157,7 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
       <span class="wx" id="wxNow"><i class="fa-solid fa-temperature-half"></i> Live weather…</span></div>
     <div class="sc-reason" id="stReason">Snow covered — seasonal closure</div>
     <p class="sc-detail" id="stDetail">Closed for winter from both the Skardu and Astore sides; normally reopens in June.</p>
-    <p class="sc-meta"><i class="fa-solid fa-circle-check"></i><span id="stMeta">Seasonal status · Updated 12 Nov 2026</span></p>
+    <p class="sc-meta"><i class="fa-solid fa-circle-check"></i><span id="stMeta">Source: Seasonal status · 12 Nov 2026</span></p>
   </div>
   <p class="ans">Closed for winter from both the Skardu and Astore sides; normally reopens in June.</p>
   <p class="ans">Deosai — the 'Land of Giants' — is one of the world's highest plateaus, averaging over 4,000m, famous for Sheosar Lake, wildflowers in July and Himalayan brown bears. That altitude is exactly why its season is short: for more than half the year it is a snowbound wilderness.</p>
@@ -204,7 +204,7 @@ fetch('data.json').then(function(x){return x.json();}).then(function(d){
   var p=document.getElementById('stPill');p.className='pill '+rt.status;p.textContent=rt.status.toUpperCase();
   document.getElementById('stReason').textContent=rt.reason;
   document.getElementById('stDetail').textContent=rt.detail;
-  document.getElementById('stMeta').textContent=rt.source+(rt.reports>0?' \u00B7 '+rt.reports+' reports':'')+' \u00B7 updated '+relTime(rt.updatedISO);
+  document.getElementById('stMeta').textContent='Source: '+rt.source+' \u00B7 updated '+relTime(rt.updatedISO);
 }).catch(function(){});
 fetch('https://api.open-meteo.com/v1/forecast?latitude=35.0&longitude=75.22&current=temperature_2m,weather_code,wind_speed_10m&timezone=Asia%2FKarachi')
 .then(function(x){return x.json();}).then(function(d){var c=d.current;

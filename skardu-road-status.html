@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skardu Road Status Today — Open or Closed? Live S-1 Update — North Live</title>
-<meta name="description" content="Skardu Road (S-1) road update today — open or closed? Live status: Winter rockfall risk. Current weather, confirmed traveller reports and answers — North Live, November 2026.">
+<meta name="description" content="Skardu Road (S-1) road update today — open or closed? Live status: Winter rockfall risk. Current weather and answers — North Live, November 2026.">
 <link rel="canonical" href="https://live.gbadventure.vip/skardu-road-status.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="North Live">
 <meta property="og:title" content="Skardu Road Status Today — Open or Closed? Live S-1 Update — North Live">
-<meta property="og:description" content="Skardu Road (S-1) road update today — open or closed? Live status: Winter rockfall risk. Current weather, confirmed traveller reports and answers — North Live, November 2026.">
+<meta property="og:description" content="Skardu Road (S-1) road update today — open or closed? Live status: Winter rockfall risk. Current weather and answers — North Live, November 2026.">
 <meta property="og:url" content="https://live.gbadventure.vip/skardu-road-status.html">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -157,7 +157,7 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
       <span class="wx" id="wxNow"><i class="fa-solid fa-temperature-half"></i> Live weather…</span></div>
     <div class="sc-reason" id="stReason">Winter rockfall risk</div>
     <p class="sc-detail" id="stDetail">Advisory: rockfall-prone stretches near Stak — travel in daylight and check before night driving.</p>
-    <p class="sc-meta"><i class="fa-solid fa-circle-check"></i><span id="stMeta">North Live advisory · 2 reports · Updated 12 Nov 2026</span></p>
+    <p class="sc-meta"><i class="fa-solid fa-circle-check"></i><span id="stMeta">Source: North Live advisory · 12 Nov 2026</span></p>
   </div>
   <p class="ans">Advisory: rockfall-prone stretches near Stak — travel in daylight and check before night driving.</p>
   <p class="ans">The S-1 follows the Indus river from Jaglot to Skardu, the gateway to Baltistan, the Deosai Plains and the Karakoram giants. It has been widened and improved in recent years, but it remains a mountain road where conditions — not distance — decide your travel time.</p>
@@ -203,7 +203,7 @@ fetch('data.json').then(function(x){return x.json();}).then(function(d){
   var p=document.getElementById('stPill');p.className='pill '+rt.status;p.textContent=rt.status.toUpperCase();
   document.getElementById('stReason').textContent=rt.reason;
   document.getElementById('stDetail').textContent=rt.detail;
-  document.getElementById('stMeta').textContent=rt.source+(rt.reports>0?' \u00B7 '+rt.reports+' reports':'')+' \u00B7 updated '+relTime(rt.updatedISO);
+  document.getElementById('stMeta').textContent='Source: '+rt.source+' \u00B7 updated '+relTime(rt.updatedISO);
 }).catch(function(){});
 fetch('https://api.open-meteo.com/v1/forecast?latitude=35.3&longitude=75.63&current=temperature_2m,weather_code,wind_speed_10m&timezone=Asia%2FKarachi')
 .then(function(x){return x.json();}).then(function(d){var c=d.current;
