@@ -357,6 +357,15 @@ h2.sec{font-size:18.5px;font-weight:700;color:var(--deep);margin:26px 0 12px}
   display:grid;place-items:center;font-size:21px;color:#fff;margin-top:-30px;border:4px solid var(--bg);
   box-shadow:0 10px 22px rgba(23,122,68,.5);flex:none}
 
+/* app install banner */
+.appbar{margin-top:16px;background:var(--deep);border-radius:20px;padding:12px 14px;display:flex;align-items:center;gap:11px;box-shadow:0 12px 26px rgba(7,40,26,.35)}
+.appbar img{width:44px;height:44px;border-radius:12px;flex:none}
+.appbar .ab-tx{min-width:0}
+.appbar .ab-t{color:#fff;font-size:13.5px;font-weight:700;line-height:1.3}
+.appbar .ab-s{color:#B9D6C2;font-size:11px;line-height:1.4;margin-top:1px}
+.appbar .ab-btn{margin-left:auto;flex:none;background:linear-gradient(145deg,var(--g1),var(--g2));color:#fff;font-weight:700;font-size:13px;padding:9px 16px;border-radius:999px}
+.appbar .ab-x{flex:none;color:#9DBFA9;font-size:14px;padding:6px}
+
 /* RESPONSIVE FIX — no side wobble */
 html,body{overflow-x:hidden;overflow-x:clip}
 body{width:100%}
@@ -387,6 +396,13 @@ def head(title, desc, canonical, jsonld=""):
 <meta property="og:description" content=\"""" + desc + """\">
 <meta property="og:url" content=\"""" + canonical + """\">
 <meta name="twitter:card" content="summary">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0B3524">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="North Live">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href=\"""" + FA_CSS + """\">
@@ -405,6 +421,12 @@ def shell_open(back=True):
     """ + back_html + """
     <a class="logo" href="index.html"><span class="tile"><i class="fa-solid fa-mountain"></i></span>North<em>Live</em></a>
     <a class="hbtn" href=\"""" + WA + """\" target="_blank" rel="noopener" aria-label="Report an update"><i class="fa-solid fa-bell"></i></a>
+  </div>
+  <div class="appbar" id="appbar" style="display:none">
+    <img src="icon-192.png" alt="North Live app icon">
+    <div class="ab-tx"><div class="ab-t">Get the free app</div><div class="ab-s" id="appbarSub">North Live — live road status &amp; weather, right on your home screen</div></div>
+    <button class="ab-btn" id="appInstall">Install</button>
+    <button class="ab-x" id="appClose" aria-label="Dismiss app banner"><i class="fa-solid fa-xmark"></i></button>
   </div>
 """
 
@@ -477,6 +499,31 @@ def status_tile(status, reason):
     return '<span class="tile red"><i class="fa-solid fa-ban"></i></span>'
 
 
+APPJS = """
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){});}
+(function(){
+  var bar=document.getElementById('appbar'),sub=document.getElementById('appbarSub'),btn=document.getElementById('appInstall');
+  if(!bar)return;
+  var standalone=(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true;
+  var dismissed=0;try{dismissed=+localStorage.getItem('nlAppDismiss')||0;}catch(e){}
+  var installed=false;try{installed=!!localStorage.getItem('nlAppInstalled');}catch(e){}
+  var forced=new URLSearchParams(location.search).has('showapp');
+  if(standalone||installed||(!forced&&Date.now()-dismissed<14*864e5))return;
+  var deferred=null,isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  function show(){bar.style.display='flex';}
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;show();});
+  window.addEventListener('appinstalled',function(){try{localStorage.setItem('nlAppInstalled','1');}catch(e){}bar.style.display='none';});
+  if(isIOS){btn.textContent='Add';show();}
+  if(forced)show();
+  btn.addEventListener('click',function(){
+    if(deferred){deferred.prompt();deferred.userChoice.then(function(){deferred=null;});}
+    else if(isIOS){sub.textContent='Tap the Share icon, then choose "Add to Home Screen".';}
+    else{sub.textContent='Open the Chrome menu and tap "Install app" / "Add to Home screen".';}
+  });
+  document.getElementById('appClose').addEventListener('click',function(){try{localStorage.setItem('nlAppDismiss',String(Date.now()));}catch(e){}bar.style.display='none';});
+})();
+"""
+
 WXJS = """
 function wxIcon(c){if(c===0)return 'fa-sun';if(c<=2)return 'fa-cloud-sun';if(c===3)return 'fa-cloud';if(c===45||c===48)return 'fa-smog';if((c>=71&&c<=77)||c===85||c===86)return 'fa-snowflake';if(c>=95)return 'fa-cloud-bolt';if(c>=51)return 'fa-cloud-rain';return 'fa-cloud';}
 function wxLabel(c){if(c===0)return 'Clear sky';if(c===1)return 'Mostly clear';if(c===2)return 'Partly cloudy';if(c===3)return 'Overcast';if(c===45||c===48)return 'Foggy';if((c>=71&&c<=77)||c===85||c===86)return 'Snow';if(c>=95)return 'Thunderstorm';if(c>=80&&c<=82)return 'Rain showers';if(c>=61&&c<=67)return 'Rain';if(c>=51&&c<=57)return 'Drizzle';return 'Cloudy';}
@@ -501,7 +548,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=__LAT__&longitude=__LON__
 .then(function(x){return x.json();}).then(function(d){var c=d.current;
   document.getElementById('wxNow').innerHTML='<i class="fa-solid '+wxIcon(c.weather_code)+'"></i> '+Math.round(c.temperature_2m)+'\\u00B0C \\u00B7 '+wxLabel(c.weather_code)+' \\u00B7 wind '+Math.round(c.wind_speed_10m)+' km/h';
 }).catch(function(){});
-</script>"""
+""" + APPJS + """</script>"""
     return (js.replace("__RID__", r["id"])
               .replace("__LAT__", str(r["lat"]))
               .replace("__LON__", str(r["lon"])))
@@ -588,7 +635,7 @@ fetch('data.json').then(function(x){return x.json();}).then(function(d){
   var ax=document.getElementById('wxalert');
   if(ax&&d.alert&&d.alert.text){document.getElementById('wxalertTx').innerHTML='<b>'+d.alert.title+'</b> '+d.alert.text+' ('+d.alert.source+')';ax.style.display='flex';}
 }).catch(function(){});
-</script>"""
+""" + APPJS + """</script>"""
 
 
 def main():
